@@ -15,7 +15,7 @@ class MainViewModel with ChangeNotifier {
   void fetchImages(String query) async {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
-    final result = _getTopFiveViewdPhotoUseCase.execute(query);
+    final result = await _getTopFiveViewdPhotoUseCase.execute(query);
 
     switch (result) {
       case Success(:final data):
