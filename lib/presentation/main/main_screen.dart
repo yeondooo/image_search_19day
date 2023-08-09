@@ -42,31 +42,33 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ),
-          GridView.builder(
-            itemCount: state.photos.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 4,
-              crossAxisSpacing: 4,
-            ),
-            itemBuilder: (context, index) {
-              final photo = state.photos[index];
-              return Hero(
-                tag: photo.id,
-                child: GestureDetector(
-                  onTap: () {
-                    context.push(
-                      '/detail',
-                      extra: photo,
-                    );
-                  },
-                  child: Image.network(
-                    photo.url,
-                    fit: BoxFit.cover,
+          Expanded(
+            child: GridView.builder(
+              itemCount: state.photos.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
+              ),
+              itemBuilder: (context, index) {
+                final photo = state.photos[index];
+                return Hero(
+                  tag: photo.id,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.push(
+                        '/detail',
+                        extra: photo,
+                      );
+                    },
+                    child: Image.network(
+                      photo.url,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           )
         ],
       ),
